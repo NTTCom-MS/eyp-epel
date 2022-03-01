@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 3.14.1592
+
+* added support for CentOS 8 / RHEL 8
+
 ## 3.14.159
 
 * dropped CentOS 5 support
