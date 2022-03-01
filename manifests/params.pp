@@ -1,9 +1,23 @@
 class epel::params
 {
+
+  if getvar('::operatingsystemmajrelease')
+  {
+    $os_maj_release = $::operatingsystemmajrelease
+  }
+  else
+  {
+    $os_versions    = split($::operatingsystemrelease, '[.]')
+    $os_maj_release = $os_versions[0]
+  }
+
+  $main_metalink = "https://mirrors.fedoraproject.org/metalink?repo=epel-${os_maj_release}&arch=\$basearch"
+
   case $::osfamily
   {
     'redhat' :
     {
+
       case $::operatingsystem
       {
           'Fedora': { notice ("EPEL will not be installed on ${::operatingsystem} ${::operatingsystemrelease}") }
