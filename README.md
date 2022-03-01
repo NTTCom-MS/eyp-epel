@@ -1,7 +1,5 @@
 # epel
 
-[![PRs Welcome](https://img.shields.io/badge/prs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
 #### Table of Contents
 
 1. [Overview](#overview)
@@ -34,16 +32,30 @@ also update ca-certificates on the first run
 class { 'epel': }
 ```
 
-## Usage
+##  Usage
 
-### epel
-
-* ensure: Used to manage the epel-package:
- - installed
- - latest
- - purged
-* manage_ca_certificates: update ca-certificates (needed to install EPEL) 
+```puppet
+class { 'epel':
+  enable_repo_epel                => false,
+  enable_repo_epel_debug          => false,
+  enable_repo_epel_source         => false,
+  enable_repo_epel_testing        => false,
+  enable_repo_epel_testing_debug  => false,
+  enable_repo_epel_testing_source => false,
+}
+```
 
 ## Reference
 
-* epel: Enables/disables epel-release
+### epel
+
+* ensure: Used to manage the **epel-release** package:
+ - installed
+ - purged
+* manage_ca_certificates: update ca-certificates (needed to install EPEL)
+* enable_repo_epel: enable/disable epel repo (default: true)
+* enable_repo_epel_debug: enable/disable epel debug repo (default: true)
+* enable_repo_epel_source: enable/disable epel source repo (default: true)
+* enable_repo_epel_testing: enable/disable epel-testing repo (default: true)
+* enable_repo_epel_testing_debug: enable/disable epel-testing debug repo (default: true)
+* enable_repo_epel_testing_source: enable/disable epel-testing source repo (default: true)
